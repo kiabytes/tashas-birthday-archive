@@ -1,0 +1,2070 @@
+/* =========================================================
+   SLYTHERIN ARCHIVES — FULL WEBSITE STYLES
+========================================================= */
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+
+    font-family: "Cinzel", serif;
+
+    background: #1a472a;
+
+    color: #E8ECEF;
+}
+
+body.modal-open,
+body.overlay-open {
+    overflow: hidden;
+}
+
+button,
+input {
+    font: inherit;
+}
+
+
+/* =========================================================
+   LOCK SCREEN
+========================================================= */
+
+#lock-screen {
+    position: fixed;
+    inset: 0;
+
+    background: #0B1018;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    z-index: 9999;
+
+    opacity: 1;
+    visibility: visible;
+
+    transition:
+        opacity 0.45s ease,
+        visibility 0.45s ease;
+}
+
+#lock-screen.screen-hidden {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+}
+
+.pin-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.hogwarts-badge {
+    width: 135px;
+    height: 135px;
+
+    object-fit: contain;
+
+    margin-bottom: 20px;
+}
+
+.pin-dots {
+    display: flex;
+
+    gap: 17px;
+
+    margin-bottom: 50px;
+}
+
+.pin-dots span {
+    width: 18px;
+    height: 18px;
+
+    border: 1px solid #6F747A;
+
+    border-radius: 50%;
+
+    transition:
+        background 0.15s,
+        transform 0.15s;
+}
+
+.pin-dots span.filled {
+    background: #D6B86A;
+
+    transform: scale(1.08);
+}
+
+.keypad {
+    display: grid;
+
+    grid-template-columns: repeat(3, 55px);
+
+    gap: 20px 25px;
+}
+
+.keypad button {
+    width: 55px;
+    height: 55px;
+
+    border: none;
+    border-radius: 50%;
+
+    background: #F1EEE6;
+
+    color: #30343A;
+
+    font-size: 19px;
+
+    font-family: "Cormorant Garamond", serif;
+
+    font-weight: bold;
+
+    cursor: pointer;
+
+    transition:
+        transform 0.15s,
+        background 0.15s;
+}
+
+.keypad button:hover {
+    background: #D6B86A;
+}
+
+.keypad button:active {
+    transform: scale(0.92);
+}
+
+#message {
+    min-height: 25px;
+
+    margin: 0 0 25px;
+
+    font-size: 18px;
+
+    color: #C9A85C;
+
+    text-align: center;
+}
+
+#message.error {
+    animation: pin-shake 0.35s ease;
+}
+
+@keyframes pin-shake {
+
+    0%,
+    100% {
+        transform: translateX(0);
+    }
+
+    25% {
+        transform: translateX(-7px);
+    }
+
+    75% {
+        transform: translateX(7px);
+    }
+
+}
+
+
+/* =========================================================
+   LOADING SCREEN
+========================================================= */
+
+#loading-screen {
+    position: fixed;
+
+    inset: 0;
+
+    z-index: 9998;
+
+    display: flex;
+
+    justify-content: center;
+    align-items: center;
+
+    background: #08120d;
+
+    opacity: 0;
+    visibility: hidden;
+
+    pointer-events: none;
+
+    transition:
+        opacity 0.5s ease,
+        visibility 0.5s ease;
+}
+
+#loading-screen.show {
+    opacity: 1;
+
+    visibility: visible;
+
+    pointer-events: auto;
+}
+
+.loading-inner {
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+    justify-content: center;
+
+    text-align: center;
+}
+
+.loading-inner img {
+    width: min(750px, 90vw);
+
+    max-height: 500px;
+
+    object-fit: contain;
+}
+
+.loading-inner p {
+    margin: 18px 0 0;
+
+    color: #D6B86A;
+
+    font-family: "Cormorant Garamond", serif;
+
+    font-size: 28px;
+
+    font-style: italic;
+
+    letter-spacing: 1px;
+}
+
+
+/* =========================================================
+   HOMEPAGE
+========================================================= */
+
+#homepage {
+    min-height: 100vh;
+
+    display: none;
+}
+
+body.home-active #homepage {
+    display: block;
+}
+
+.welcome-section {
+    height: 400px;
+
+    background-image: url('slytherin background.png');
+    background-size: cover;
+    background-position: center;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 60px;
+}
+
+.title {
+    margin: 0;
+
+    padding-top: 35px;
+
+    text-align: center;
+
+    font-family: "Cinzel", serif;
+
+    font-size: 80px;
+
+    font-weight: 500;
+
+    line-height: 1.15;
+
+    letter-spacing: 5px;
+
+    color: #E8ECEF;
+
+    text-shadow: 
+    3px 3px 5px rgba(0, 0, 0, 0.8),
+    0 0 12px rgba(255, 255, 255, 0.2);
+}
+
+.subtitle {
+    padding-top: 20px;
+
+    margin-bottom: 0;
+
+    text-align: center;
+
+    font-family: "Cormorant Garamond", serif;
+
+    font-size: 25px;
+
+    font-weight: normal;
+
+    font-style: italic;
+
+    text-shadow: 
+    3px 3px 5px rgba(0, 0, 0, 0.8),
+    0 0 12px rgba(255, 255, 255, 0.2);
+}
+
+.shelf-section {
+    position: relative;
+
+    width: 100%;
+
+    height: 900px;
+
+    overflow: hidden;
+}
+
+.shelf-background {
+    position: absolute;
+
+    top: 0;
+    left: 0;
+
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+
+    z-index: 0;
+}
+
+.shelf-title {
+    position: absolute;
+    top: 80px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 2;
+    color: #E8ECEF;
+    font-family: "Cormorant Garamond", serif;
+    font-size: 23px;
+    font-weight: normal;
+    font-style: italic;
+    text-align: center;
+    white-space: nowrap;
+    text-shadow: 
+    3px 3px 5px rgba(0, 0, 0, 0.8),
+    0 0 12px rgba(255, 255, 255, 0.2);
+}
+
+/* =========================================================
+   ARCHIVE ITEMS
+========================================================= */
+
+.archive-item {
+    position: absolute;
+
+    display: flex;
+
+    justify-content: center;
+    align-items: center;
+
+    width: 100px;
+    height: 100px;
+
+    padding: 0;
+
+    border: none;
+
+    background: transparent;
+
+    cursor: pointer;
+
+    z-index: 5;
+}
+
+.archive-item img {
+    width: 150px;
+    height: 150px;
+
+    object-fit: contain;
+
+    transition:
+        filter 0.25s ease,
+        transform 0.25s ease;
+}
+
+
+/* TOP SHELF */
+
+.item-1 {
+    left: 26%;
+    top: 230px;
+}
+
+.item-2 {
+    left: 39%;
+    top: 230px;
+}
+
+.item-3 {
+    left: 53%;
+    top: 230px;
+}
+
+.item-4 {
+    left: 67%;
+    top: 230px;
+}
+
+
+/* BOTTOM SHELF */
+
+.item-5 {
+    left: 26%;
+    top: 545px;
+}
+
+.item-6 {
+    left: 39%;
+    top: 553px;
+}
+
+.item-7 {
+    left: 53%;
+    top: 545px;
+}
+
+.item-8 {
+    left: 67%;
+    top: 545px;
+}
+
+
+/* HOVER GLOW */
+
+.archive-item:hover img,
+.archive-item:focus-visible img {
+    filter:
+        drop-shadow(0 0 5px #ffffff)
+        drop-shadow(0 0 12px #cfd4d8)
+        drop-shadow(0 0 20px #ffffff);
+
+    transform: scale(1.08);
+}
+
+.item-label {
+    position: absolute;
+
+    bottom: 120%;
+
+    left: 50%;
+
+    transform:
+        translateX(-50%)
+        translateY(8px);
+
+    width: max-content;
+
+    padding: 7px 14px;
+
+    background: rgba(5, 10, 8, 0.9);
+
+    border: 1px solid #C9A85C;
+
+    color: #F1EEE6;
+
+    font-family: "Cormorant Garamond", serif;
+
+    font-size: 18px;
+
+    font-style: italic;
+
+    white-space: nowrap;
+
+    opacity: 0;
+
+    pointer-events: none;
+
+    transition:
+        opacity 0.2s ease,
+        transform 0.2s ease;
+}
+
+.archive-item:hover .item-label,
+.archive-item:focus-visible .item-label {
+    opacity: 1;
+
+    transform:
+        translateX(-50%)
+        translateY(-5px);
+}
+
+
+/* =========================================================
+   MAIN ARCHIVE MODAL
+========================================================= */
+
+#archive-modal {
+    position: fixed;
+
+    inset: 0;
+
+    z-index: 1000;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    background: rgba(0, 0, 0, 0.75);
+
+    padding: 30px;
+
+    opacity: 0;
+    visibility: hidden;
+
+    pointer-events: none;
+
+    transition:
+        opacity 0.25s ease,
+        visibility 0.25s ease;
+}
+
+#archive-modal.show {
+    opacity: 1;
+
+    visibility: visible;
+
+    pointer-events: auto;
+}
+
+.modal-content {
+    align-items: center;
+
+    position: relative;
+
+    width: 92vw;
+
+    max-width: 1500px;
+
+    height: 88vh;
+
+    max-height: 900px;
+
+    padding: 45px 55px;
+
+    background: #08120d;
+
+    border: 1px solid #c7a95b;
+
+    overflow: hidden;
+
+    transform:
+        translateY(8px)
+        scale(0.985);
+
+    transition:
+        transform 0.25s ease;
+}
+
+#archive-modal.show .modal-content {
+    transform:
+        translateY(0)
+        scale(1);
+}
+
+#modal-title {
+    margin: 0;
+    text-align: center;
+    font-family: "Cinzel", serif;
+
+    font-size: 35px;
+
+    color: #D6B86A;
+
+    letter-spacing: 3px;
+}
+
+#modal-body {
+    align-items: center;
+    height: calc(100% - 55px);
+
+    overflow-y: auto;
+
+    padding: 10px 20px 30px;
+
+    scrollbar-width: thin;
+
+    scrollbar-color:
+        #C9A85C
+        #0b1710;
+}
+
+#modal-body::-webkit-scrollbar {
+    width: 8px;
+}
+
+#modal-body::-webkit-scrollbar-track {
+    background: #0b1710;
+}
+
+#modal-body::-webkit-scrollbar-thumb {
+    background: #C9A85C;
+}
+
+/* Only the ID-card archive view is non-scrollable. */
+#modal-body:has(.id-card-content) {
+    overflow: hidden;
+}
+
+/* Honeydukes archive view is also non-scrollable. */
+#modal-body:has(.honeydukes-content) {
+    overflow: hidden;
+}
+
+/* Movie archive view is also non-scrollable. */
+#modal-body:has(.movie-card-unit) {
+    overflow: hidden;
+}
+
+.close-modal {
+    position: absolute;
+
+    top: 15px;
+    right: 20px;
+
+    border: none;
+
+    background: transparent;
+
+    color: #E8ECEF;
+
+    font-size: 30px;
+
+    line-height: 1;
+
+    cursor: pointer;
+
+    transition:
+        color 0.2s,
+        transform 0.2s;
+
+    z-index: 20;
+}
+
+.close-modal:hover,
+.close-modal:focus-visible {
+    color: #D6B86A;
+
+    transform: scale(1.08);
+}
+
+
+/* =========================================================
+   SHARED BUTTON
+========================================================= */
+
+.letter-button {
+    padding: 12px 26px;
+
+    border: 1px solid #C9A85C;
+
+    background: rgba(201, 168, 92, 0.08);
+
+    color: #D6B86A;
+
+    font-family: "Cinzel", serif;
+
+    font-size: 14px;
+
+    letter-spacing: 1.5px;
+
+    cursor: pointer;
+
+    text-decoration: none;
+
+    display: inline-flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    transition:
+        background 0.25s ease,
+        color 0.25s ease,
+        box-shadow 0.25s ease,
+        transform 0.15s ease;
+}
+
+.letter-button:hover,
+.letter-button:focus-visible {
+    background: rgba(201, 168, 92, 0.18);
+
+    color: #F1EEE6;
+
+    box-shadow:
+        0 0 10px rgba(201, 168, 92, 0.25);
+}
+
+.letter-button:active {
+    transform: scale(0.97);
+}
+
+.letter-button:disabled {
+    opacity: 0.45;
+
+    cursor: not-allowed;
+
+    box-shadow: none;
+}
+
+
+/* =========================================================
+   GIFT 1 — HONEYDUKES
+========================================================= */
+
+.honeydukes-content {
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    justify-content: center;
+
+    min-height: 100%;
+}
+
+.timer-display {
+    height: 45px;
+
+    font-family: "Cinzel", serif;
+
+    font-size: 25px;
+
+    color: #D6B86A;
+
+    letter-spacing: 3px;
+
+    margin-bottom: 5px;
+
+    transition: opacity 0.3s ease;
+}
+
+.honeydukes-cake {
+    width: 260px;
+    height: 260px;
+
+    object-fit: contain;
+
+    transform: scale(1.45);
+
+    transition:
+        transform 0.5s ease,
+        filter 0.5s ease;
+}
+
+.honeydukes-cake.cake-blown {
+    transform: scale(1.04);
+
+    filter:
+        drop-shadow(0 0 8px #D6B86A)
+        drop-shadow(0 0 18px rgba(214, 182, 106, 0.5));
+}
+
+.honeydukes-message {
+    max-width: 450px;
+
+    margin: 10px 0 25px;
+
+    font-family: "Cormorant Garamond", serif;
+
+    font-size: 20px;
+
+    font-style: italic;
+
+    line-height: 1.5;
+
+    color: #E8ECEF;
+
+    text-align: center;
+}
+
+.candle-button {
+    padding: 12px 25px;
+
+    border: 1px solid #C9A85C;
+
+    background: rgba(201, 168, 92, 0.08);
+
+    color: #D6B86A;
+
+    font-family: "Cinzel", serif;
+
+    font-size: 14px;
+
+    letter-spacing: 1px;
+
+    cursor: pointer;
+
+    transition:
+        background 0.25s ease,
+        color 0.25s ease,
+        box-shadow 0.25s ease;
+}
+
+.candle-button:hover {
+    background: rgba(201, 168, 92, 0.18);
+
+    color: #F1EEE6;
+
+    box-shadow:
+        0 0 10px rgba(201, 168, 92, 0.25);
+}
+
+.candle-button:disabled {
+    opacity: 0.5;
+
+    cursor: default;
+
+    box-shadow: none;
+}
+
+
+/* =========================================================
+   GIFT 2 / 3 — OWL POST
+========================================================= */
+
+.owl-post-content {
+    min-height: 100%;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    justify-content: center;
+}
+
+.letter-preview {
+    width: 250px;
+    height: 250px;
+
+    object-fit: contain;
+
+    margin: 5px 0 20px;
+}
+
+.owl-message {
+    margin: 5px 0;
+
+    font-family: "Cormorant Garamond", serif;
+
+    font-size: 20px;
+
+    line-height: 1;
+
+    padding-bottom: 20px;
+
+    color: #E8ECEF;
+
+    text-align: center;
+}
+
+.letter-reading {
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    gap: 25px;
+
+    padding-bottom: 20px;
+}
+
+.letter-page {
+    width: 100%;
+
+    max-width: 650px;
+
+    height: auto;
+
+    display: block;
+}
+
+
+/* =========================================================
+   GIFT 4 — FLORA
+========================================================= */
+
+.flora-content {
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    justify-content: flex-start;
+
+    min-height: 100%;
+
+    position: relative;
+}
+
+.flora-message {
+    margin: 5px 0 15px;
+
+    font-family: "Cormorant Garamond", serif;
+
+    font-size: 20px;
+
+    line-height: 1.4;
+
+    color: #E8ECEF;
+}
+
+.flower-display {
+    position: relative;
+
+    width: 290px;
+    height: 300px;
+
+    display: flex;
+
+    justify-content: center;
+    align-items: center;
+
+    margin: 5px 0 30px;
+
+    cursor: pointer;
+}
+
+.flora-flower {
+    width: 350px;
+    height: 350px;
+    object-fit: contain;
+
+    position: relative;
+
+    z-index: 2;
+
+    transition:
+        transform 0.35s ease,
+        filter 0.35s ease;
+}
+
+.flower-display:hover .flora-flower {
+    transform: scale(1.03);
+
+    filter:
+        drop-shadow(0 0 3px #F1EEE6)
+        drop-shadow(0 0 7px #D6D9DC)
+        drop-shadow(0 0 12px rgba(220, 225, 230, 0.65))
+        drop-shadow(0 0 18px rgba(255, 255, 255, 0.25));
+}
+
+.flower-display::before,
+.flower-display::after {
+    content: "✦  ˚  ✧  ˚  ✦  ˚  ✧";
+
+    position: absolute;
+
+    width: 100%;
+    height: 100%;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    color: #E4E7EA;
+
+    font-size: 15px;
+
+    letter-spacing: 18px;
+
+    opacity: 0;
+
+    pointer-events: none;
+
+    transition:
+        opacity 0.35s ease,
+        transform 0.5s ease;
+
+    text-shadow:
+        0 0 5px #FFFFFF,
+        0 0 10px #C9CED3,
+        0 0 18px rgba(255, 255, 255, 0.7);
+
+    z-index: 1;
+}
+
+.flower-display::before {
+    transform:
+        scale(0.8)
+        rotate(-12deg);
+}
+
+.flower-display::after {
+    content: "✧  ˚  ✦  ˚  ✧  ˚  ✦";
+
+    transform:
+        scale(0.75)
+        rotate(18deg);
+
+    font-size: 16px;
+}
+
+.flower-display:hover::before {
+    opacity: 1;
+
+    transform:
+        scale(1.05)
+        rotate(-12deg);
+}
+
+.flower-display:hover::after {
+    opacity: 1;
+
+    transform:
+        scale(1)
+        rotate(18deg);
+}
+
+.flora-buttons {
+    display: flex;
+
+    justify-content: center;
+    align-items: center;
+
+    gap: 15px;
+
+    margin-top: 5px;
+}
+
+
+/* =========================================================
+   NESTED OVERLAYS
+========================================================= */
+
+.nested-overlay {
+    position: fixed;
+
+    inset: 0;
+
+    display: flex;
+
+    justify-content: center;
+    align-items: center;
+
+    background: rgba(3, 8, 5, 0.90);
+
+    z-index: 20000;
+
+    opacity: 0;
+
+    visibility: hidden;
+
+    pointer-events: none;
+
+    transition:
+        opacity 0.35s ease,
+        visibility 0.35s ease;
+}
+
+.nested-overlay.show {
+    opacity: 1;
+
+    visibility: visible;
+
+    pointer-events: auto;
+}
+
+.flora-card-container {
+    position: relative;
+
+    width: min(750px, 82vw);
+
+    max-height: 88vh;
+
+    display: flex;
+
+    justify-content: center;
+    align-items: center;
+
+    transform:
+        scale(0.94)
+        translateY(10px);
+
+    transition:
+        transform 0.35s ease;
+}
+
+.nested-overlay.show .flora-card-container,
+.nested-overlay.show .id-info-container {
+    transform:
+        scale(1)
+        translateY(0);
+}
+
+.flora-card-image {
+    display: block;
+
+    max-width: 100%;
+
+    max-height: 82vh;
+
+    width: auto;
+    height: auto;
+
+    object-fit: contain;
+
+    box-shadow:
+        0 0 20px rgba(0, 0, 0, 0.8),
+        0 0 45px rgba(201, 168, 92, 0.12);
+}
+
+.flora-card-exit,
+.id-info-exit {
+    position: absolute;
+
+    right: -5px;
+    top: -45px;
+
+    padding: 8px 18px;
+
+    border: 1px solid #C9A85C;
+
+    background: rgba(5, 10, 8, 0.9);
+
+    color: #D6B86A;
+
+    font-family: "Cinzel", serif;
+
+    font-size: 13px;
+
+    letter-spacing: 1.5px;
+
+    cursor: pointer;
+
+    transition:
+        background 0.25s ease,
+        color 0.25s ease,
+        box-shadow 0.25s ease;
+}
+
+.flora-card-exit:hover,
+.id-info-exit:hover {
+    background: rgba(201, 168, 92, 0.18);
+
+    color: #F1EEE6;
+
+    box-shadow:
+        0 0 10px rgba(201, 168, 92, 0.25);
+}
+
+
+/* =========================================================
+   GIFT 5 — ID CARD EDITOR
+========================================================= */
+
+.id-card-content {
+    width: 100%;
+
+    padding:
+        10px
+        20px
+        30px;
+}
+
+
+.id-card-message {
+    text-align: center;
+
+    margin:
+        0 0 25px;
+
+    font-family:
+        "Cormorant Garamond",
+        serif;
+
+    font-size: 18px;
+
+    font-style: italic;
+}
+
+
+/* =========================================================
+   ID CARD LAYOUT
+========================================================= */
+
+.id-card-editor {
+    width: 100%;
+
+    display: grid;
+
+    grid-template-columns:
+        80px
+        minmax(500px, 700px);
+
+    gap: 5px;
+
+    align-items: start;
+
+    justify-content: center;
+
+    margin-top: 15px;
+}
+
+
+/* =========================================================
+   LAYOUT SELECTOR
+========================================================= */
+
+.id-card-layout-selector {
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    gap: 10px;
+
+    padding-top: 25px;
+}
+
+
+.layout-title {
+
+    width: 120px;
+
+    text-align: center;
+
+    margin:
+        0 0 5px;
+
+    color:
+        #c7a95b;
+
+    font-family:
+        "Cinzel",
+        serif;
+
+    font-size: 13px;
+
+    line-height: 1.4;
+}
+
+
+.layout-choice {
+
+    width: 34px;
+
+    height: 34px;
+
+    padding: 0;
+
+    border-radius: 50%;
+
+    border:
+        1px solid
+        #c7a95b;
+
+    background:
+        transparent;
+
+    color:
+        #c7a95b;
+
+    font-family:
+        "Cinzel",
+        serif;
+
+    cursor: pointer;
+
+    transition:
+        0.2s ease;
+}
+
+
+.layout-choice:hover,
+.layout-choice:focus-visible {
+
+    background:
+        rgba(
+            199,
+            169,
+            91,
+            0.15
+        );
+
+}
+
+
+.layout-choice.active {
+
+    background:
+        #c7a95b;
+
+    color:
+        #08120d;
+}
+
+
+/* =========================================================
+   ID CARD PREVIEW
+========================================================= */
+
+.id-card-preview-column {
+
+    width: 100%;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    transform: translateX(-40px);
+}
+
+
+.id-card-preview {
+
+    position: relative;
+
+    width: 100%;
+
+    max-width: 530px;
+
+    margin:
+        0 auto;
+
+    aspect-ratio:
+        1000 / 650;
+}
+
+
+#id-card-background {
+
+    display: block;
+
+    width: 100%;
+
+    height: 100%;
+
+    object-fit: contain;
+}
+
+
+/* =========================================================
+   DOWNLOAD BUTTON
+========================================================= */
+
+.id-card-actions {
+
+    width: 100%;
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    margin-top: 15px;
+}
+
+/* =========================================================
+   GIFT 6 & 7 — CARD COLLECTION
+========================================================= */
+
+.collection-content {
+    min-height: 100%;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    padding: 5px 0 20px;
+}
+
+.collection-message {
+    margin: 10px 0 30px;
+
+    padding: 0 20px;
+
+    max-width: none;
+
+    white-space: nowrap;
+
+    font-family: "Cormorant Garamond", serif;
+
+    font-size: 20px;
+
+    font-style: italic;
+
+    text-align: center;
+
+    color: #E8ECEF;
+}
+
+.card-grid {
+    width: 100%;
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(
+            4,
+            minmax(0, 1fr)
+        );
+
+    gap: 12px;
+
+    align-items: start;
+
+    justify-items: center;
+}
+
+.flip-card {
+    width: min(100%, 280px);
+
+    aspect-ratio: 638 / 886;
+
+    perspective: 1200px;
+
+    cursor: pointer;
+
+    outline: none;
+}
+
+.flip-card:focus-visible {
+    box-shadow:
+        0 0 0 2px #C9A85C;
+}
+
+.flip-card-inner {
+    position: relative;
+
+    width: 100%;
+    height: 100%;
+
+    transform-style: preserve-3d;
+
+    transition:
+        transform 0.65s cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+
+.flip-card.is-flipped .flip-card-inner {
+    transform: rotateY(180deg);
+}
+
+.flip-card-face {
+    position: absolute;
+
+    inset: 0;
+
+    overflow: hidden;
+
+    backface-visibility: hidden;
+
+    -webkit-backface-visibility: hidden;
+
+    border:
+        1px solid rgba(201, 168, 92, 0.6);
+
+    background: #111b15;
+}
+
+.flip-card-face img {
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+
+    display: block;
+}
+
+.flip-card-front {
+    transform: rotateY(180deg);
+}
+
+.flip-card:hover .flip-card-face {
+    box-shadow:
+        0 0 10px rgba(255, 255, 255, 0.15),
+        0 0 18px rgba(201, 168, 92, 0.12);
+}
+
+.collection-download {
+    margin-top: 30px;
+}
+
+.movie-card-unit {
+    width: min(210%, 280px);
+}
+
+
+/* =========================================================
+   GIFT 8 — SLYTHERIN PRIVILEGE
+========================================================= */
+
+.playlist-content {
+    min-height: 100%;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+}
+
+.playlist-message {
+    margin: 10px 0 20px;
+
+    font-family: "Cormorant Garamond", serif;
+
+    font-size: 20px;
+
+    font-style: italic;
+
+    text-align: center;
+}
+
+.playlist-card-wrap {
+    position: relative;
+
+    width: min(700px, 90%);
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+}
+
+.playlist-card-image {
+    width: 100%;
+
+    height: auto;
+
+    display: block;
+
+    object-fit: contain;
+
+    box-shadow:
+        0 0 30px rgba(0, 0, 0, 0.45);
+}
+
+.playlist-download {
+    margin-top: 20px;
+}
+
+
+/* =========================================================
+   QUEST MODALS
+========================================================= */
+
+.special-overlay {
+    position: fixed;
+
+    inset: 0;
+
+    z-index: 5000;
+
+    display: flex;
+
+    justify-content: center;
+    align-items: center;
+
+    padding: 30px;
+
+    background: rgba(0, 0, 0, 0.75);
+
+    opacity: 0;
+    visibility: hidden;
+
+    pointer-events: none;
+
+    transition:
+        opacity 0.25s ease,
+        visibility 0.25s ease;
+}
+
+
+.special-overlay.show {
+    opacity: 1;
+
+    visibility: visible;
+
+    pointer-events: auto;
+}
+
+
+/* QUEST MODAL BOX */
+
+.quest-modal-content {
+    position: relative;
+
+    width: 92vw;
+    max-width: 900px;
+
+    height: 88vh;
+    max-height: 900px;
+
+    padding: 45px 40px 30px;
+
+    background: #08120d;
+
+    border: 1px solid #c7a95b;
+
+    overflow: hidden;
+
+    transform:
+        translateY(8px)
+        scale(0.985);
+
+    transition:
+        transform 0.25s ease;
+
+    box-shadow:
+        0 20px 60px rgba(0, 0, 0, 0.6),
+        0 0 30px rgba(201, 168, 92, 0.08);
+}
+
+
+.special-overlay.show .quest-modal-content {
+    transform:
+        translateY(0)
+        scale(1);
+}
+
+
+/* QUEST TITLE */
+
+.quest-modal-content h2 {
+    margin: 0;
+
+    text-align: center;
+
+    font-family: "Cinzel", serif;
+
+    font-size: 35px;
+
+    color: #D6B86A;
+
+    letter-spacing: 3px;
+}
+
+
+/* QUEST IMAGE AREA */
+
+.quest-modal-body {
+    height: calc(100% - 55px);
+
+    display: block;
+
+    overflow-y: auto;
+    overflow-x: hidden;
+
+    padding: 20px 25px 30px;
+
+    scrollbar-width: thin;
+
+    scrollbar-color:
+        #C9A85C
+        #0b1710;
+}
+
+
+.quest-modal-body::-webkit-scrollbar {
+    width: 8px;
+}
+
+
+.quest-modal-body::-webkit-scrollbar-track {
+    background: #0b1710;
+}
+
+
+.quest-modal-body::-webkit-scrollbar-thumb {
+    background: #C9A85C;
+}
+
+
+/* QUEST IMAGE */
+
+.quest-modal-image {
+    display: block;
+
+    width: 100%;
+
+    max-width: 600px;
+
+    height: auto;
+
+    margin: 0 auto;
+
+    object-fit: contain;
+
+    box-shadow:
+        0 0 30px rgba(0, 0, 0, 0.75);
+}
+
+
+/* QUEST CLOSE BUTTON */
+
+.quest-close-modal {
+    position: absolute;
+
+    top: 15px;
+    right: 20px;
+
+    border: none;
+
+    background: transparent;
+
+    color: #E8ECEF;
+
+    font-size: 30px;
+
+    line-height: 1;
+
+    cursor: pointer;
+
+    transition:
+        color 0.2s,
+        transform 0.2s;
+
+    z-index: 20;
+}
+
+
+.quest-close-modal:hover,
+.quest-close-modal:focus-visible {
+    color: #D6B86A;
+
+    transform: scale(1.08);
+}
+
+
+/* =========================================================
+   RESPONSIVE
+========================================================= */
+
+@media (max-width: 1200px) {
+
+    .title {
+        font-size: 60px;
+    }
+
+    .subtitle {
+        font-size: 22px;
+    }
+
+    .id-card-editor {
+        grid-template-columns:
+            100px
+            minmax(650px, 850px);
+
+        gap: 10px;
+    }
+
+    .card-grid {
+        gap: 15px;
+    }
+
+}
+
+
+@media (max-width: 1000px) {
+
+    .id-card-editor {
+        grid-template-columns:
+            90px
+            minmax(500px, 1fr);
+
+        gap: 10px;
+    }
+
+    .card-grid {
+        grid-template-columns:
+            repeat(
+                2,
+                minmax(150px, 210px)
+            );
+
+        justify-content: center;
+    }
+
+}
+
+
+@media (max-width: 700px) {
+
+    .welcome-section {
+        min-height: 330px;
+
+        padding: 40px 15px 0;
+    }
+
+    .title {
+        padding-top: 20px;
+
+        font-size: 42px;
+
+        letter-spacing: 2px;
+    }
+
+    .subtitle {
+        padding-top: 15px;
+
+        font-size: 19px;
+
+        line-height: 1.3;
+    }
+
+    .shelf-section {
+        height: 720px;
+    }
+
+    .archive-item {
+        width: 75px;
+        height: 75px;
+    }
+
+    .archive-item img {
+        width: 115px;
+        height: 115px;
+    }
+
+    .item-1,
+    .item-5 {
+        left: 18%;
+    }
+
+    .item-2,
+    .item-6 {
+        left: 38%;
+    }
+
+    .item-3,
+    .item-7 {
+        left: 58%;
+    }
+
+    .item-4,
+    .item-8 {
+        left: 78%;
+    }
+
+    .item-1,
+    .item-2,
+    .item-3,
+    .item-4 {
+        top: 180px;
+    }
+
+    .item-5,
+    .item-6,
+    .item-7,
+    .item-8 {
+        top: 470px;
+    }
+
+    .item-label {
+        display: none;
+    }
+
+    #archive-modal {
+        padding: 12px;
+    }
+
+    .modal-content {
+        width: 96vw;
+
+        height: 94vh;
+
+        padding:
+            40px
+            18px
+            18px;
+    }
+
+    #modal-title {
+        font-size: 25px;
+
+        letter-spacing: 1.5px;
+
+        padding-right: 30px;
+    }
+
+    #modal-body {
+        padding:
+            8px
+            4px
+            20px;
+    }
+
+    .id-card-editor {
+        display: flex;
+
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+    }
+
+    .id-card-layout-selector {
+        order: 1;
+
+        flex-direction: row;
+
+        justify-content: center;
+
+        width: 100%;
+
+        padding-top: 5px;
+
+        gap: 10px;
+    }
+
+    .layout-title {
+        width: auto;
+
+        margin-right: 6px;
+    }
+
+    .id-card-preview {
+        order: 2;
+
+        width: 100%;
+    }
+
+    .id-card-actions {
+        flex-direction: column;
+
+        align-items: stretch;
+    }
+
+    .card-grid {
+        grid-template-columns:
+            repeat(
+                2,
+                minmax(120px, 170px)
+            );
+    }
+
+    .quest-letter-container {
+        width: min(92vw, 620px);
+    }
+
+    .overlay-exit,
+    .flora-card-exit,
+    .id-info-exit {
+        top: -40px;
+
+        right: 0;
+    }
+
+}
+
+
+@media (max-width: 480px) {
+
+    .keypad {
+        gap: 16px 18px;
+    }
+
+    .title {
+        font-size: 34px;
+    }
+
+    .subtitle {
+        font-size: 17px;
+    }
+
+    .shelf-section {
+        height: 620px;
+    }
+
+    .archive-item img {
+        width: 90px;
+        height: 90px;
+    }
+
+    .item-1,
+    .item-2,
+    .item-3,
+    .item-4 {
+        top: 160px;
+    }
+
+    .item-5,
+    .item-6,
+    .item-7,
+    .item-8 {
+        top: 405px;
+    }
+
+    .item-1,
+    .item-5 {
+        left: 13%;
+    }
+
+    .item-2,
+    .item-6 {
+        left: 34%;
+    }
+
+    .item-3,
+    .item-7 {
+        left: 55%;
+    }
+
+    .item-4,
+    .item-8 {
+        left: 76%;
+    }
+
+    .timer-display {
+        font-size: 23px;
+    }
+
+    .honeydukes-cake {
+        width: 210px;
+        height: 210px;
+    }
+
+    .flora-buttons {
+        flex-direction: column;
+    }
+
+    .card-grid {
+        grid-template-columns:
+            repeat(
+                2,
+                minmax(105px, 145px)
+            );
+
+        gap: 12px;
+    }
+
+    .collection-message,
+    .playlist-message {
+        font-size: 18px;
+    }
+
+    .id-info-fallback {
+        padding: 30px 20px;
+    }
+
+}

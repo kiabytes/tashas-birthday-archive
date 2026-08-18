@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>tasha's birthday archive</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300..700;1,300..700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400..900&display=swap" rel="stylesheet">
+
+    <link rel="icon" type="image/png" href="icon badge.png">
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<audio id="background-music" loop>
+    <source src="audio/background-music.mp3" type="audio/mpeg">
+</audio>
+
+<!-- =========================
+     1. LOCK SCREEN
+========================= -->
+
+<div id="lock-screen">
+
+    <div class="pin-container">
+
+        <img
+            src="hogwarts badge.png"
+            class="hogwarts-badge"
+            alt="Hogwarts badge"
+        >
+
+        <p id="message" aria-live="polite"></p>
+
+        <div class="pin-dots" id="pin-dots" aria-label="PIN entry">
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+
+        <div class="keypad">
+
+            <button type="button" onclick="enterNumber('1')">1</button>
+            <button type="button" onclick="enterNumber('2')">2</button>
+            <button type="button" onclick="enterNumber('3')">3</button>
+
+            <button type="button" onclick="enterNumber('4')">4</button>
+            <button type="button" onclick="enterNumber('5')">5</button>
+            <button type="button" onclick="enterNumber('6')">6</button>
+
+            <button type="button" onclick="enterNumber('7')">7</button>
+            <button type="button" onclick="enterNumber('8')">8</button>
+            <button type="button" onclick="enterNumber('9')">9</button>
+
+            <button type="button" class="clear" onclick="clearPin()">C</button>
+            <button type="button" onclick="enterNumber('0')">0</button>
+            <button type="button" class="delete" onclick="deleteNumber()">⌫</button>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- =========================
+     LOADING SCREEN
+========================= -->
+
+<div id="loading-screen" aria-hidden="true">
+
+    <div class="loading-inner">
+
+        <img
+            src="loading screen.gif"
+            alt="Opening the Slytherin Archives"
+        >
+
+        <p>
+            Opening the archives...
+        </p>
+
+    </div>
+
+</div>
+
+
+<!-- =========================
+     3. HOMEPAGE
+========================= -->
+
+<main id="homepage">
+
+    <section class="welcome-section">
+
+        <h1 class="title">
+            Welcome to the<br>
+            Slytherin Archives!
+        </h1>
+
+        <h2 class="subtitle">
+            A collection of memories, letters, and little treasures, kept just for you.
+        </h2>
+
+    </section>
+
+
+    <section class="shelf-section">
+
+    <div class="shelf-title">
+        A Slytherin knows better than to leave a secret unopened. <br>
+        Begin at the top left and work your way across, then down. <br>
+        Every treasure on these shelves is waiting to be discovered.<br>
+    </div>
+
+    <img
+        src="shelf background2.png"
+        class="shelf-background"
+        alt="Slytherin archive shelves"
+    >
+
+
+        <!-- GIFT 1 -->
+
+        <button
+            class="archive-item item-1"
+            type="button"
+            onclick="openArchive('honeydukes')"
+            aria-label="Open Honeydukes Delivery"
+        >
+
+            <img
+                src="cake box.png"
+                alt="Honeydukes Delivery"
+            >
+
+            <span class="item-label">
+                Honeydukes Delivery
+            </span>
+
+        </button>
+
+
+        <!-- GIFT 2 -->
+
+        <button
+            class="archive-item item-2"
+            type="button"
+            onclick="openArchive('specialLetter')"
+            aria-label="Open A Special Letter"
+        >
+
+            <img
+                src="letter 1.png"
+                alt="A Special Letter"
+            >
+
+            <span class="item-label">
+                A Special Letter
+            </span>
+
+        </button>
+
+
+        <!-- GIFT 3 -->
+
+        <button
+            class="archive-item item-3"
+            type="button"
+            onclick="openArchive('birthdayLetter')"
+            aria-label="Open A Few Wishes For You"
+        >
+
+            <img
+                src="letter 2.png"
+                alt="A Few Wishes For You"
+            >
+
+            <span class="item-label">
+                A Few Wishes For You
+            </span>
+
+        </button>
+
+
+        <!-- GIFT 4 -->
+
+        <button
+            class="archive-item item-4"
+            type="button"
+            onclick="openArchive('flora')"
+            aria-label="Open Flora of the Serpent's Garden"
+        >
+
+            <img
+                src="gift 1.png"
+                alt="Flora of the Serpent's Garden"
+            >
+
+            <span class="item-label">
+                Flora of the Serpent's Garden
+            </span>
+
+        </button>
+
+
+        <!-- GIFT 5 -->
+
+        <button
+            class="archive-item item-5"
+            type="button"
+            onclick="openArchive('idCard')"
+            aria-label="Open The Serpent's Registry"
+        >
+
+            <img
+                src="gift 2.png"
+                alt="The Serpent's Registry"
+            >
+
+            <span class="item-label">
+                The Serpent's Registry
+            </span>
+
+        </button>
+
+
+        <!-- GIFT 6 -->
+
+        <button
+            class="archive-item item-6"
+            type="button"
+            onclick="openArchive('specialCards')"
+            aria-label="Open The Serpent's Card Collection"
+        >
+
+            <img
+                src="gift 3.png"
+                alt="The Serpent's Card Collection"
+            >
+
+            <span class="item-label">
+                The Serpent's Card Collection
+            </span>
+
+        </button>
+
+
+        <!-- GIFT 7 -->
+
+        <button
+            class="archive-item item-7"
+            type="button"
+            onclick="openArchive('movieCards')"
+            aria-label="Open The Moving Picture Archives"
+        >
+
+            <img
+                src="gift 4.png"
+                alt="The Moving Picture Archives"
+            >
+
+            <span class="item-label">
+                The Moving Picture Archives
+            </span>
+
+        </button>
+
+
+        <!-- GIFT 8 -->
+
+        <button
+            class="archive-item item-8"
+            type="button"
+            onclick="openArchive('playlist')"
+            aria-label="Open The Slytherin Privilege"
+        >
+
+            <img
+                src="gift 5.png"
+                alt="The Slytherin Privilege"
+            >
+
+            <span class="item-label">
+                The Slytherin Privilege
+            </span>
+
+        </button>
+
+    </section>
+
+</main>
+
+
+<!-- =========================
+     QUEST BEGIN MODAL
+========================= -->
+
+<div
+    id="quest-letter-modal"
+    class="special-overlay"
+    aria-hidden="true"
+>
+
+    <div
+        class="quest-modal-content"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="quest-begin-title"
+    >
+
+        <button
+            class="quest-close-modal"
+            type="button"
+            onclick="closeQuestLetter()"
+            aria-label="Close quest instructions"
+        >
+            ×
+        </button>
+
+
+        <h2 id="quest-begin-title">
+            The Quest Begins
+        </h2>
+
+
+        <div class="quest-modal-body">
+
+            <img
+                src="quest begins.png"
+                class="quest-modal-image"
+                alt="Quest begins instructions"
+            >
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- =========================
+     QUEST COMPLETED MODAL
+========================= -->
+
+<div
+    id="quest-completed-modal"
+    class="special-overlay"
+    aria-hidden="true"
+>
+
+    <div
+        class="quest-modal-content"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="quest-completed-title"
+    >
+
+        <button
+            class="quest-close-modal"
+            type="button"
+            onclick="closeQuestCompleted()"
+            aria-label="Close quest completed message"
+        >
+            ×
+        </button>
+
+
+        <h2 id="quest-completed-title">
+            Quest Complete
+        </h2>
+
+
+        <div class="quest-modal-body">
+
+            <img
+                src="quest completed.png"
+                class="quest-modal-image"
+                alt="Quest completed"
+            >
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- =========================
+     MAIN ARCHIVE MODAL
+========================= -->
+
+<div
+    id="archive-modal"
+    aria-hidden="true"
+>
+
+    <div
+        class="modal-content"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="modal-title"
+    >
+
+        <button
+            class="close-modal"
+            type="button"
+            onclick="closeArchive()"
+            aria-label="Close archive"
+        >
+            ×
+        </button>
+
+
+        <h2 id="modal-title"></h2>
+
+
+        <div id="modal-body"></div>
+
+    </div>
+
+</div>
+
+
+<script src="script.js"></script>
+
+</body>
+</html>
